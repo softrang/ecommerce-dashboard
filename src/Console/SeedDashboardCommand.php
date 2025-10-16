@@ -3,7 +3,7 @@
 namespace softrang\EcommerceDashboard\Console;
 
 use Illuminate\Console\Command;
-use softrang\EcommerceDashboard\Database\Seeders\DashboardSeeder;
+use softrang\EcommerceDashboard\Database\Seeders\AdminSeeder;
 
 class SeedDashboardCommand extends Command
 {
@@ -13,9 +13,9 @@ class SeedDashboardCommand extends Command
     public function handle()
     {
         $this->call('db:seed', [
-            '--class' => DashboardSeeder::class,
+            '--class' => AdminSeeder::class,
         ]);
 
-        $this->info('✅ Dashboard seeded successfully!');
+        $this->info('Dashboard seeded successfully!');
     }
 }
