@@ -12,7 +12,7 @@ return [
     */
 
     'name' => 'Softrang E-Commerce Dashboard',
-    'version' => '1.0.3',
+    'version' => '1.0.4',
 
     // Example settings
     'theme' => 'default',

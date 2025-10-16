@@ -23,9 +23,9 @@ class EcommerceDashboardServiceProvider extends ServiceProvider
         ], 'ecommerce-dashboard-assets');
 
         // Publish config
-        $this->publishes([
-            __DIR__.'/../config/dashboard.php' => config_path('dashboard.php'),
-        ], 'ecommerce-dashboard-config');
+       $this->publishes([
+        __DIR__.'/../config/dashboard.php' => config_path('dashboard.php'),
+    ], 'config');
 
         // Register seeder command
         if ($this->app->runningInConsole()) {
