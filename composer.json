@@ -1,0 +1,30 @@
+{
+  "name": "softrang/ecommerce-dashboard",
+"description": "Softrang's powerful and fully customizable Laravel e-commerce dashboard package. Designed for modern online stores and e-commerce applications, it provides a ready-to-use admin panel with dynamic widgets, intuitive navigation, role-based access, customizable themes, and seamless Laravel integration. Built by Softrang to help developers quickly create professional, reliable, and visually appealing e-commerce backends.",
+
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "softrang\\EcommerceDashboard\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "softrang\\EcommerceDashboard\\EcommerceDashboardServiceProvider"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/softrang/ecommerce-dashboard.git"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "illuminate/support": "^12.0"
+  },
+  "minimum-stability": "dev"
+}
