@@ -12,7 +12,7 @@ return [
     */
 
     'name' => 'Softrang E-Commerce Dashboard',
-    'version' => '1.0.1',
+    'version' => '1.0.2',
 
     // Example settings
     'theme' => 'default',
@@ -21,4 +21,8 @@ return [
         'orders_summary' => true,
         'user_stats' => true,
     ],
+
+   
+    'guard' => 'admin',
+
 ];

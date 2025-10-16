@@ -14,22 +14,40 @@ class EcommerceDashboardServiceProvider extends ServiceProvider
         // Load views
         $this->loadViewsFrom(__DIR__.'/Resources/views', 'ecommerce-dashboard');
 
+        // Load migrations
+        $this->loadMigrationsFrom(__DIR__.'/Database/migrations');
+
         // Publish assets
         $this->publishes([
             __DIR__.'/Resources/assets' => public_path('vendor/ecommerce-dashboard'),
-        ], 'dashboard-assets');
+        ], 'ecommerce-dashboard-assets');
 
         // Publish config
         $this->publishes([
             __DIR__.'/../config/dashboard.php' => config_path('dashboard.php'),
-        ], 'dashboard-config');
+        ], 'ecommerce-dashboard-config');
+
+        // Register seeder command
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \softrang\EcommerceDashboard\Console\SeedDashboardCommand::class,
+            ]);
+        }
+
+         config([
+        'auth.guards.admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'auth.providers.admins' => [
+            'driver' => 'eloquent',
+            'model' => \softrang\EcommerceDashboard\Models\Admin::class,
+        ],
+    ]);
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/dashboard.php',
-            'dashboard'
-        );
+        $this->mergeConfigFrom(__DIR__.'/../config/dashboard.php', 'dashboard');
     }
 }
