@@ -1,20 +1,17 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Softrang E-commerce Dashboard Configuration
     |--------------------------------------------------------------------------
-    |
-    | You can define any default settings or options here. This file must
-    | always return an array.
-    |
     */
 
     'name' => 'Softrang E-Commerce Dashboard',
-    'version' => '1.0.4',
+    'version' => '1.0.6',
 
-    // Example settings
+    // Default UI settings
     'theme' => 'default',
     'widgets' => [
         'sales_chart' => true,
@@ -22,7 +19,27 @@ return [
         'user_stats' => true,
     ],
 
-   
-    'guard' => 'admin',
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Guards for Admin
+    |--------------------------------------------------------------------------
+    */
+    'guards' => [
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+    ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | User Providers
+    |--------------------------------------------------------------------------
+    */
+    'providers' => [
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => \softrang\EcommerceDashboard\Models\Admin::class,
+        ],
+    ],
 ];
