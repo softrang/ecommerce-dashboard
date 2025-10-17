@@ -29,8 +29,7 @@ class EcommerceDashboardServiceProvider extends ServiceProvider
             __DIR__.'/../config/dashboard.php' => config_path('dashboard.php'),
         ], 'ecommerce-dashboard-config');
 
-        // ✅ Extend Auth configuration dynamically
-        $this->extendAuthConfig();
+  
 
         // ✅ Register console commands
         if ($this->app->runningInConsole()) {
@@ -44,32 +43,14 @@ class EcommerceDashboardServiceProvider extends ServiceProvider
     {
         // ✅ Merge your package config correctly
         $this->mergeConfigFrom(__DIR__.'/../config/dashboard.php', 'dashboard');
+   
+     // ✅ Bind a custom auth wrapper
+    $this->app->singleton('dashboard-auth', function ($app) {
+        return new \softrang\EcommerceDashboard\Services\DashboardAuthManager($app);
+    });
+   
+   
+   
     }
 
-    /**
-     * Dynamically extend Laravel's auth configuration
-     */
-    protected function extendAuthConfig()
-    {
-        $authConfig = $this->app['config']->get('auth', []);
-
-        // ✅ Add custom guard if not exists
-        if (!isset($authConfig['guards']['admin'])) {
-            $authConfig['guards']['admin'] = [
-                'driver' => 'session',
-                'provider' => 'admins',
-            ];
-        }
-
-        // ✅ Add provider if not exists
-        if (!isset($authConfig['providers']['admins'])) {
-            $authConfig['providers']['admins'] = [
-                'driver' => 'eloquent',
-                'model' => Admin::class,
-            ];
-        }
-
-        // ✅ Update config runtime
-        $this->app['config']->set('auth', $authConfig);
-    }
 }
