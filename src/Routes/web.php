@@ -5,9 +5,9 @@ use softrang\EcommerceDashboard\Http\Controllers\AuthController;
 use softrang\EcommerceDashboard\Http\Controllers\DashboardController;
 
 // Authentication
-Route::group(['prefix' => 'admin', 'middleware' => ['web']], function () {
+Route::group(['prefix' => 'admin','middleware' => ['web']], function () {
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('login', [AuthController::class, 'login'])->name('login.submit');
+    Route::post('login/submit', [AuthController::class, 'login'])->name('login.submit');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
