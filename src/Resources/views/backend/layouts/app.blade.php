@@ -11,8 +11,10 @@
     {{-- Google Font --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
     {{-- Custom CSS --}}
-    <link rel="stylesheet" href="{{ asset('vendor/ecommerce-dashboard/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/ecommerce-dashboard/css/layout.css') }}">
 
     {{-- Additional Page Styles --}}
     @stack('styles')
@@ -22,10 +24,7 @@
 <body>
 
     {{-- Sidebar --}}
-    <aside class="sidebar">
-        <h2>🧭 Softrang</h2>
-        
-    </aside>
+    @include('ecommerce-dashboard::backend.partials.sidebar')
 
     {{-- Main Content --}}
     <div class="main-content">
@@ -47,7 +46,7 @@
     </div>
 
     {{-- Scripts --}}
-    <script src="{{ asset('vendor/ecommerce-dashboard/js/main.js') }}"></script>
+    <script src="{{ asset('vendor/ecommerce-dashboard/js/layout.js') }}"></script>
 
     @stack('scripts')
 </body>

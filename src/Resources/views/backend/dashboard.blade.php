@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('ecommerce-dashboard::backend.layouts.app')
 
 @section('title', 'Dashboard - Softrang')
 
