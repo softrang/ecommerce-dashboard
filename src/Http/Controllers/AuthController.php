@@ -3,7 +3,7 @@
 namespace softrang\EcommerceDashboard\Http\Controllers;
 
 use Illuminate\Http\Request;
-use softrang\EcommerceDashboard\Facades\DashboardAuth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,7 +21,7 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (DashboardAuth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended(route('dashboard'));
         }
@@ -31,7 +31,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        DashboardAuth::logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

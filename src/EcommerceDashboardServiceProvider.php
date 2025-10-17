@@ -3,7 +3,6 @@
 namespace softrang\EcommerceDashboard;
 
 use Illuminate\Support\ServiceProvider;
-use softrang\EcommerceDashboard\Models\Admin; // ✅ Import the Admin model
 use Illuminate\Support\Facades\Auth;
 
 class EcommerceDashboardServiceProvider extends ServiceProvider

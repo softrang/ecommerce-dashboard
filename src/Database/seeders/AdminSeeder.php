@@ -3,19 +3,19 @@
 namespace softrang\EcommerceDashboard\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use softrang\EcommerceDashboard\Models\Admin;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
     public function run()
     {
-        Admin::updateOrCreate(
-            ['email' => 'admin@softrang.com'],
-            [
-                'name' => 'Softrang Admin',
-                'password' => Hash::make('password'),
-            ]
-        );
+        user::updateOrCreate([
+            'name' => 'softrang-ecommerce-dashboard',
+            'email' => 'info@softrang.com',
+            'email_verified_at' => now(),
+            'password' =>  Hash::make('1'),
+            'remember_token' => Str::random(10),
+        ]);
     }
 }
