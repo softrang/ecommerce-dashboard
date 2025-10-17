@@ -3,34 +3,32 @@
 namespace softrang\EcommerceDashboard;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Auth;
 
 class EcommerceDashboardServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // ✅ Load routes
+        // Load package routes
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
 
-        // ✅ Load views
+        // Load views
         $this->loadViewsFrom(__DIR__.'/Resources/views', 'ecommerce-dashboard');
 
-        // ✅ Load migrations
+        // Load migrations
         $this->loadMigrationsFrom(__DIR__.'/Database/migrations');
 
-        // ✅ Publish assets
+        // Publish assets
         $this->publishes([
             __DIR__.'/Resources/assets' => public_path('vendor/ecommerce-dashboard'),
         ], 'ecommerce-dashboard-assets');
 
-        // ✅ Publish config file
+        // Publish config
         $this->publishes([
             __DIR__.'/../config/dashboard.php' => config_path('dashboard.php'),
         ], 'ecommerce-dashboard-config');
 
-  
-
-        // ✅ Register console commands
+      
+        // Register custom seeder command
         if ($this->app->runningInConsole()) {
             $this->commands([
                 \softrang\EcommerceDashboard\Console\SeedDashboardCommand::class,
@@ -40,16 +38,9 @@ class EcommerceDashboardServiceProvider extends ServiceProvider
 
     public function register()
     {
-        // ✅ Merge your package config correctly
+        // Merge dashboard config
         $this->mergeConfigFrom(__DIR__.'/../config/dashboard.php', 'dashboard');
-   
-     // ✅ Bind a custom auth wrapper
-    $this->app->singleton('dashboard-auth', function ($app) {
-        return new \softrang\EcommerceDashboard\Services\DashboardAuthManager($app);
-    });
-   
-   
-   
     }
 
+    
 }
