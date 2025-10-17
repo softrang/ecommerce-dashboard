@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('ecommerce-dashboard::dashboard');
+        return view('ecommerce-dashboard::backend.dashboard');
     }
 }

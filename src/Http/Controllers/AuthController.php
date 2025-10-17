@@ -8,7 +8,7 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('ecommerce-dashboard::auth.login');
+        return view('ecommerce-dashboard::backend.auth.login');
     }
 
     public function login(Request $request)

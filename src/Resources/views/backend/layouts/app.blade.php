@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     {{-- Custom CSS --}}
+    <link rel="stylesheet" href="{{ asset('vendor/ecommerce-dashboard/css/topbar.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/ecommerce-dashboard/css/layout.css') }}">
 
     {{-- Additional Page Styles --}}
@@ -24,17 +25,12 @@
 <body>
 
     {{-- Sidebar --}}
+    @include('ecommerce-dashboard::backend.partials.topbar')
     @include('ecommerce-dashboard::backend.partials.sidebar')
 
     {{-- Main Content --}}
     <div class="main-content">
-        <div class="topbar">
-            <h1>@yield('page_title', 'Dashboard')</h1>
-            <div class="user-info">
-                <img src="{{ asset('vendor/ecommerce-dashboard/images/user.png') }}" alt="User">
-                <span>{{ Auth::user()->name ?? 'Guest' }}</span>
-            </div>
-        </div>
+       
 
         <div class="content">
             @yield('content')
