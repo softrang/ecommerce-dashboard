@@ -9,7 +9,6 @@ return [
     */
 
     'name' => 'Softrang E-Commerce Dashboard',
-    'version' => '1.1.2',
 
     // Default UI settings
     'theme' => 'default',
